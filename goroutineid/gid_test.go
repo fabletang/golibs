@@ -1,11 +1,14 @@
-package goroutineid_test
+package goroutineid
 
 import (
 	"testing"
-
-	"github.com/fabletang/golibs/goroutineid"
 )
 
 func TestGetGID(t *testing.T) {
-	t.Logf("goroutin id:%d\n", goroutineid.GetGID())
+	gid := GetGID()
+
+	t.Logf("goroutin id:%d\n", gid)
+	if gid > 1<<32 {
+		t.Errorf("grountine id:%d > 1<<32,maybe err!", gid)
+	}
 }

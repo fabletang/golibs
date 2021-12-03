@@ -1,16 +1,15 @@
-package xerr_test
+package xerr
 
 import (
 	"testing"
-
-	"github.com/fabletang/golibs/xerr"
+	//"github.com/fabletang/golibs/xerr"
 )
 
 func TestXerror(t *testing.T) {
 	//var xerr Xerror
-	xerror := xerr.New(500, "test")
+	xerror := New(500, "test")
 	t.Log(xerror)
-	if len(xerror.Cause) < 1 {
+	if len(xerror.Cause) < 10 {
 		t.Errorf("xerr.Cause err:%s\n", xerror)
 	}
 	//fmt.Printf("the 64-bit hash of 'abc' is: 0x%x\n", hash64)

@@ -13,13 +13,16 @@ type Xerr struct {
 }
 
 func (e Xerr) Error() string {
-	return fmt.Sprintf("Code:%v,Msg:%v,Cause:%v", e.Code, e.Msg, e.Cause)
+	return fmt.Sprintf("Xerr-[Code:%v,Msg:%v,Cause:%v]", e.Code, e.Msg, e.Cause)
 }
 
 // New instance
 func New(code int, msg string) (e Xerr) {
 
-	e.Cause = fmt.Sprint(runtime.Caller(1))
+	//func Caller(skip int) (pc uintptr, file string, line int, ok bool) {
+	_, fName, LN, _ := runtime.Caller(1)
+	//e.Cause = fmt.Sprint(runtime.Caller(1))
+	e.Cause = fmt.Sprintf("fName-%s,LN-%d", fName, LN)
 	//runtime.Stack()
 	e.Code = code
 	e.Msg = msg
